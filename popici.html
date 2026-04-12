@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>New Age PC - Máy tính chính hãng | Gaming & Workstation</title>
+    <!-- Font Awesome 6 (icons) & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+            color: #1e2a3e;
+            line-height: 1.5;
+        }
+
+        /* container chính */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* header & topbar */
+        .top-bar {
+            background-color: #1e2a3e;
+            color: #fff;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-contact i, .top-support i {
+            margin-right: 6px;
+            color: #f97316;
+        }
+
+        .top-contact span, .top-support span {
+            margin-right: 20px;
+        }
+
+        .top-support a {
+            color: #f1f5f9;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .top-support a:hover {
+            color: #f97316;
+        }
+
+        /* main header */
+        .main-header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #e3342f, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 420px;
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .search-bar:focus-within {
+            border-color: #f97316;
+            box-shadow: 0 0 0 2px rgba(249,115,22,0.2);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: #f97316;
+            border: none;
+            padding: 0 20px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-bar button:hover {
+            background: #e3342f;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .cart-icon, .user-icon {
+            position: relative;
+            font-size: 22px;
+            color: #1e2a3e;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .cart-icon:hover, .user-icon:hover {
+            color: #f97316;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #e3342f;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 2px 6px;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        /* nav categories */
+        .nav-category {
+            background: white;
+            border-top: 1px solid #eef2f6;
+            border-bottom: 1px solid #eef2f6;
+            padding: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 28px;
+            padding: 12px 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e2a3e;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .nav-links li a:hover {
+            color: #f97316;
+        }
+
+        .nav-links li a i {
+            margin-right: 6px;
+            font-size: 14px;
+        }
+
+        /* Hero banner */
+        .hero {
+            background: linear-gradient(98deg, #ffedea 0%, #fff1e6 100%);
+            margin: 24px 0;
+            border-radius: 32px;
+            padding: 40px 36px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+
+        .hero-text h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #c2410c;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin: 12px 0 20px;
+            color: #334155;
+        }
+
+        .hero-btn {
+            background: #e3342f;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .hero-btn:hover {
+            background: #c2410c;
+            transform: scale(1.02);
+        }
+
+        .hero-badge {
+            background: rgba(255,255,240,0.9);
+            padding: 16px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #e3342f;
+        }
+
+        /* section title */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 48px 0 24px 0;
+            flex-wrap: wrap;
+        }
+        .section-title h3 {
+            font-size: 28px;
+            font-weight: 700;
+            border-left: 5px solid #f97316;
+            padding-left: 18px;
+            color: #0f172a;
+        }
+        .section-title a {
+            color: #f97316;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 28px;
+            margin-bottom: 48px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+            border-color: #fed7aa;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #e3342f;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 30px;
+            z-index: 2;
+        }
+
+        .product-badge.green {
+            background: #2b9348;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f1f5f9;
+            transition: 0.2s;
+        }
+
+        .product-info {
+            padding: 18px 16px 20px;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .product-spec {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .product-spec span {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 30px;
+        }
+
+        .price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 12px 0 16px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #e3342f;
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .installment {
+            font-size: 12px;
+            color: #15803d;
+            font-weight: 500;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .btn-buy, .btn-detail {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-buy {
+            background: #e3342f;
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background: #b91c1c;
+        }
+
+        .btn-detail {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-detail:hover {
+            background: #e9ecef;
+        }
+
+        /* service features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 24px;
+            background: white;
+            padding: 32px 28px;
+            border-radius: 32px;
+            margin: 48px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            border: 1px solid #f1f1ef;
+        }
+
+        .feature-item {
+            flex: 1;
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .feature-item i {
+            font-size: 36px;
+            color: #f97316;
+            margin-bottom: 12px;
+        }
+
+        .feature-item h4 {
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        /* footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #f97316;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 18px;
+            margin-top: 16px;
+        }
+
+        .social-icons a {
+            font-size: 22px;
+            color: #cbd5e1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 28px;
+            border-top: 1px solid #1e293b;
+            font-size: 13px;
+        }
+
+        /* responsive */
+        @media (max-width: 780px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-bar {
+                max-width: 100%;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 28px;
+            }
+            .hero-text h2 {
+                font-size: 28px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 18px;
+            }
+            .section-title h3 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .product-actions {
+                flex-direction: column;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .top-bar .container {
+                justify-content: center;
+            }
+        }
+
+        button, .cart-icon, .user-icon {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar: hotline + chính sách -->
+<div class="top-bar">
+    <div class="container">
+        <div class="top-contact">
+            <i class="fas fa-phone-alt"></i>
+            <span>Hotline: 1900 6369</span>
+            <i class="fas fa-store"></i>
+            <span>Hệ thống 15 chi nhánh</span>
+        </div>
+        <div class="top-support">
+            <i class="fas fa-shield-alt"></i>
+            <a href="#">Bảo hành tận tâm</a>
+            <span style="margin-left: 12px;"><i class="fas fa-truck"></i> Giao hàng nhanh</span>
+        </div>
+    </div>
+</div>
+
+<!-- Main header -->
+<div class="main-header">
+    <div class="container header-flex">
+        <div class="logo">
+            <h1>NEW AGE PC</h1>
+            <p>Chuyên gia máy tính & linh kiện chính hãng</p>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Bạn cần tìm PC, Laptop, linh kiện ...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+            <div class="user-icon">
+                <i class="far fa-user-circle"></i>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge">3</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Danh mục sản phẩm (thanh navigation) -->
+<div class="nav-category">
+    <div class="container">
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-laptop"></i> Laptop</a></li>
+            <li><a href="#"><i class="fas fa-desktop"></i> PC Gaming</a></li>
+            <li><a href="#"><i class="fas fa-microchip"></i> Linh kiện</a></li>
+            <li><a href="#"><i class="fas fa-tv"></i> Màn hình</a></li>
+            <li><a href="#"><i class="fas fa-keyboard"></i> Bàn phím - Chuột</a></li>
+            <li><a href="#"><i class="fas fa-tags"></i> Khuyến mãi</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> Tin công nghệ</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Hero Banner -->
+<div class="container">
+    <div class="hero">
+        <div class="hero-text">
+            <h2>PC GAMING RTX 50 series <br> Siêu khuyến mãi</h2>
+            <p>Giảm đến 20% + tặng chuột không dây cao cấp</p>
+            <button class="hero-btn">Xem ngay →</button>
+        </div>
+        <div class="hero-badge">
+            <i class="fas fa-bolt"></i> Flash sale cuối tuần <br> <span style="font-size: 20px;">-15% toàn bộ PC</span>
+        </div>
+    </div>
+</div>
+
+<!-- Sản phẩm nổi bật - best seller -->
+<div class="container">
+    <div class="section-title">
+        <h3><i class="fas fa-fire" style="color: #f97316; margin-right: 8px;"></i> SẢN PHẨM NỔI BẬT</h3>
+        <a href="#">Xem tất cả <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="product-grid">
+        <!-- Card 1 - PC Gaming Cao cấp -->
+        <div class="product-card">
+            <div class="product-badge">Giảm 15%</div>
+            <img class="product-img" src="https://nguyencongpc.vn/media/product/250-28601-pc-gaming-ryzen-7-7800x3d-ram-32gb-rtx-5070-12gb-01.jpg" alt="Gaming PC">
+            <div class="product-info">
+                <div class="product-title">PC Gaming Xtreme</div>
+                <div class="product-spec"><span>Ryzen 7 7800X3D</span><span>RTX 5070</span><span>32GB DDR5</span></div>
+                <div class="price-box">
+                    <span class="current-price">58.290.000₫</span>
+                    <span class="old-price">62.290.000₫</span>
+                </div>
+                <div class="installment"><i class="fas fa-credit-card"></i> Trả góp 0% qua thẻ</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 - Laptop Gaming ASUS TUF -->
+        <div class="product-card">
+            <div class="product-badge green">Trả góp 0%</div>
+            <img class="product-img" src="https://nguyencongpc.vn/media/product/250-21939-sp180429.png" alt="Laptop Asus">
+            <div class="product-info">
+                <div class="product-title">Laptop ASUS TUF F15</div>
+                <div class="product-spec"><span>i7-13620H</span><span>RTX 4060</span><span>16GB/1TB</span></div>
+                <div class="price-box">
+                    <span class="current-price">18.990.000₫</span>
+                    <span class="old-price">19.990.000₫</span>
+                </div>
+                <div class="installment"><i class="fas fa-gem"></i> Tặng chuột gaming trị giá 500k</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 - PC Workstation AMD -->
+        <div class="product-card">
+            <div class="product-badge">Hot!</div>
+            <img class="product-img" src="https://nguyencongpc.vn/media/product/250-28136-pc-gaming-25251352.jpg" alt="Workstation">
+            <div class="product-info">
+                <div class="product-title">PC Workstation Đồ Họa</div>
+                <div class="product-spec"><span>Intel Core Ultra 9 285k</span><span>RTX 5080</span><span>64GB RAM</span></div>
+                <div class="price-box">
+                    <span class="current-price">90.990.000₫</span>
+                    <span class="old-price">100.990.000₫</span>
+                </div>
+                <div class="installment">Tặng bộ lưu điện cao cấp</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 - Laptop Dell XPS 13+ -->
+        <div class="product-card">
+            <div class="product-badge green">Hàng có sẵn</div>
+            <img class="product-img" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_744_1__1_12.png" alt="Dell XPS">
+            <div class="product-info">
+                <div class="product-title">Laptop Dell 15 DC15250 KR0N9</div>
+                <div class="product-spec"><span>Intel Core i5 1334U</span><span>16GB/512GB</span><span>1920 x 1080 pixels (FullHD)</span></div>
+                <div class="price-box">
+                    <span class="current-price">16.490.000₫</span>
+                    <span class="old-price">20.990.000₫</span>
+                </div>
+                <div class="installment">Bảo hành 2 năm chính hãng</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 - PC Gaming i5 Tối giản -->
+        <div class="product-card">
+            <div class="product-badge">Giá sốc</div>
+            <img class="product-img" src="https://nguyencongpc.vn/media/product/250-27841-27426-pc-gaming-i5-13400f-ram-16g-rgb-vga-rtx-3060-12g-00.jpg" alt="PC i5">
+            <div class="product-info">
+                <div class="product-title">PC Gaming i5 - RTX 5060</div>
+                <div class="product-spec"><span>i5-13400F</span><span>RTX 5060</span><span>16GB/512GB</span></div>
+                <div class="price-box">
+                    <span class="current-price">22.390.000₫</span>
+                    <span class="old-price">23.990.000₫</span>
+                </div>
+                <div class="installment">Free ship nội thành</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 - Laptop Lenovo Legion 5 -->
+        <div class="product-card">
+            <div class="product-badge">Quà tặng 1 triệu</div>
+            <img class="product-img" src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_d_i_7__1_5.png" alt="Lenovo Legion">
+            <div class="product-info">
+                <div class="product-title">Lenovo Legion 5 Pro</div>
+                <div class="product-spec"><span>Ryzen 7 8845HS</span><span>RTX 4060</span><span>32GB/1TB</span></div>
+                <div class="price-box">
+                    <span class="current-price">39.990.000₫</span>
+                    <span class="old-price">44.990.000₫</span>
+                </div>
+                <div class="installment">Túi chống sốc + chuột gaming</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 - PC All-in-One HP -->
+        <div class="product-card">
+            <div class="product-badge green">Tiết kiệm điện</div>
+            <img class="product-img" src="https://hanoicomputercdn.com/media/product/71821_pc_hp_all_in_one_24_cb1025d_850x850_5.jpg" alt="HP AIO">
+            <div class="product-info">
+                <div class="product-title">Máy tính All-in-One HP 24</div>
+                <div class="product-spec"><span>i5-1235U</span><span>8GB/512GB SSD</span><span>23.8" FHD</span></div>
+                <div class="price-box">
+                    <span class="current-price">19.499.000₫</span>
+                    <span class="old-price">20.590.000₫</span>
+                </div>
+                <div class="installment">Bàn phím + chuột không dây</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 - Laptop Acer Nitro V -->
+        <div class="product-card">
+            <div class="product-badge">Deal độc quyền</div>
+            <img class="product-img" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQnEHff7ZpL3eYEtPpZUyHFkggcwKR42cPZWX6UzljBBqzXorJDfV1DE4ZqoZIRG3D0g3dXKopJxpYD86zp-ySLdmEn_02OnOoXslPtXzgBL6MkhzE8_70gHnKLbX5DhSyCXa38w5zeUQ&usqp=CAc" alt="Acer Nitro">
+            <div class="product-info">
+                <div class="product-title">Acer Nitro V 15 Gaming</div>
+                <div class="product-spec"><span>Ryzen 5-6600H</span><span>RTX 3050</span><span>16GB/512GB</span></div>
+                <div class="price-box">
+                    <span class="current-price">20.900.000₫</span>
+                    <span class="old-price">22.090.000₫</span>
+                </div>
+                <div class="installment">Tặng balo chuyên dụng</div>
+                <div class="product-actions">
+                    <button class="btn-buy"><i class="fas fa-cart-plus"></i> Mua ngay</button>
+                    <button class="btn-detail">Chi tiết</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dịch vụ nổi bật (Feature) -->
+<div class="container">
+    <div class="features">
+        <div class="feature-item">
+            <i class="fas fa-truck-fast"></i>
+            <h4>Giao hàng toàn quốc</h4>
+            <p>Miễn phí vận chuyển đơn hàng > 10tr</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-headset"></i>
+            <h4>Hỗ trợ 24/7</h4>
+            <p>Đội ngũ kỹ thuật chuyên nghiệp</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-shield-heart"></i>
+            <h4>Bảo hành chính hãng</h4>
+            <p>Lên đến 36 tháng tại các trung tâm</p>
+        </div>
+        <div class="feature-item">
+            <i class="fas fa-laptop-code"></i>
+            <h4>Nâng cấp linh hoạt</h4>
+            <p>Tư vấn cấu hình theo nhu cầu</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer giống phong cách Nguyễn Công PC -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>NEW AGE PC</h4>
+                <p><i class="fas fa-map-marker-alt"></i></p>
+                <p><i class="fas fa-phone"></i></p>
+                <p><i class="fas fa-envelope"></i> cskh@newagepc.vn</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hỗ trợ khách hàng</h4>
+                <a href="#">Hướng dẫn mua hàng</a>
+                <a href="#">Chính sách đổi trả</a>
+                <a href="#">Chính sách bảo hành</a>
+                <a href="#">Phương thức thanh toán</a>
+                <a href="#">Góp ý & khiếu nại</a>
+            </div>
+            <div class="footer-col">
+                <h4>Về chúng tôi</h4>
+                <a href="#">Giới thiệu công ty</a>
+                <a href="#">Tuyển dụng</a>
+                <a href="#">Hệ thống cửa hàng</a>
+                <a href="#">Tin tức công nghệ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kết nối cộng đồng</h4>
+                <a href="#">Cộng đồng Game thủ</a>
+                <a href="#">Câu lạc bộ Overclock</a>
+                <a href="#">Đăng ký nhận bảng giá</a>
+                <div style="margin-top: 12px;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Đã thông báo Bộ Công Thương</div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 NEW AGE PC - Máy tính chính hãng, giá tốt nhất thị trường. Thiết kế bởi đội ngũ NCPC.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+```
