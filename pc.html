@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>PC Gaming - New Age PC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f7f9fc;
+        color: #1e2a3e;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .top-bar {
+        background: #1e2a3e;
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 0;
+      }
+      .top-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .top-contact i,
+      .top-support i {
+        margin-right: 6px;
+        color: #f97316;
+      }
+      .main-header {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .header-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .logo {
+        cursor: pointer;
+      }
+      .logo h1 {
+        font-size: 28px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #e3342f, #f97316);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .logo p {
+        font-size: 12px;
+        color: #475569;
+      }
+      .search-bar {
+        flex: 1;
+        max-width: 420px;
+        display: flex;
+        background: #f1f5f9;
+        border-radius: 40px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+      }
+      .search-bar input {
+        flex: 1;
+        padding: 12px 18px;
+        border: none;
+        background: transparent;
+        outline: none;
+      }
+      .search-bar button {
+        background: #f97316;
+        border: none;
+        padding: 0 20px;
+        color: white;
+        cursor: pointer;
+      }
+      .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .product-dropdown {
+        position: relative;
+      }
+      .product-dropdown .dropdown-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #1e2a3e;
+        display: flex;
+        align-items: center;
+      }
+      .product-dropdown .dropdown-icon:hover {
+        color: #f97316;
+      }
+      .product-dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        min-width: 210px;
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s;
+        z-index: 200;
+        border: 1px solid #edf2f7;
+      }
+      .product-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .dropdown-menu li {
+        list-style: none;
+        padding: 10px 20px;
+      }
+      .dropdown-menu li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #1e2a3e;
+        display: block;
+        font-size: 14px;
+      }
+      .dropdown-menu li a i {
+        margin-right: 10px;
+        width: 20px;
+        color: #f97316;
+      }
+      .dropdown-menu li:hover {
+        background: #f8fafc;
+      }
+      .cart-icon,
+      .user-icon {
+        position: relative;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e3342f;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        border-radius: 30px;
+        padding: 2px 6px;
+        min-width: 18px;
+        text-align: center;
+      }
+      .user-loggedin {
+        font-size: 14px;
+        font-weight: 500;
+        color: #f97316;
+        margin-left: 4px;
+      }
+      .logout-btn {
+        background: none;
+        border: none;
+        color: #e3342f;
+        font-size: 12px;
+        margin-left: 8px;
+        cursor: pointer;
+      }
+      .contact-bar {
+        background: #fff;
+        border-bottom: 1px solid #eef2f6;
+        padding: 10px 0;
+      }
+      .contact-flex {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #1e2a3e;
+        cursor: pointer;
+      }
+      .contact-item .fab.fa-facebook-messenger {
+        color: #0084ff;
+      }
+      .contact-item .custom-zalo-icon {
+        width: 20px;
+        height: 20px;
+        background: #0068ff;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .contact-item .fas.fa-phone-alt {
+        color: #e3342f;
+      }
+      .pc-layout {
+        display: flex;
+        gap: 30px;
+        margin: 30px 0;
+      }
+      .filter-sidebar {
+        width: 280px;
+        background: white;
+        border-radius: 24px;
+        padding: 20px;
+        border: 1px solid #edf2f7;
+        height: fit-content;
+        position: sticky;
+        top: 100px;
+      }
+      .filter-group {
+        margin-bottom: 24px;
+        border-bottom: 1px solid #eef2f6;
+        padding-bottom: 16px;
+      }
+      .filter-group h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .filter-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .filter-options label {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .filter-options input {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+      .price-range {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .price-range input {
+        width: 100px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .sort-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .sort-select {
+        padding: 8px 16px;
+        border-radius: 40px;
+        border: 1px solid #e2e8f0;
+        background: white;
+      }
+      .product-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.2s;
+        border: 1px solid #edf2f7;
+      }
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+      .product-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        background: #f1f5f9;
+      }
+      .product-info {
+        padding: 14px;
+      }
+      .product-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .product-spec {
+        font-size: 12px;
+        color: #475569;
+        margin-bottom: 8px;
+      }
+      .current-price {
+        font-size: 18px;
+        font-weight: 800;
+        color: #e3342f;
+      }
+      .old-price {
+        font-size: 13px;
+        color: #94a3b8;
+        text-decoration: line-through;
+        margin-left: 8px;
+      }
+      .product-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .quantity-selector-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f1f5f9;
+        border-radius: 40px;
+        padding: 5px 10px;
+      }
+      .quantity-selector-card button {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: none;
+        background: #e2e8f0;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .quantity-selector-card span {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 30px;
+        text-align: center;
+      }
+      .btn-buy {
+        background: #e3342f;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 8px;
+        border-radius: 40px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-buy:hover {
+        background: #b91c1c;
+      }
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 24px;
+        background: white;
+        padding: 32px 28px;
+        border-radius: 32px;
+        margin: 48px 0;
+      }
+      .feature-item {
+        flex: 1;
+        text-align: center;
+      }
+      .feature-item i {
+        font-size: 36px;
+        color: #f97316;
+        transition: transform 0.3s;
+        display: inline-block;
+      }
+      .feature-item:hover i {
+        transform: rotate(360deg);
+      }
+      footer {
+        background: #0f172a;
+        color: #cbd5e1;
+        padding: 48px 0 24px;
+        margin-top: 60px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+      }
+      .footer-col a {
+        color: #cbd5e1;
+        text-decoration: none;
+        display: block;
+        margin: 8px 0;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: #f97316;
+        text-decoration: none;
+      }
+      .social-icons {
+        display: flex;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #1e293b;
+        transition: 0.2s;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      .social-icons a .fab.fa-facebook-f {
+        color: #1877f2;
+      }
+      .social-icons a .fab.fa-youtube {
+        color: #ff0000;
+      }
+      .social-icons a .fab.fa-instagram {
+        color: #e4405f;
+      }
+      .social-icons a .custom-zalo-icon-footer {
+        width: 20px;
+        height: 20px;
+        background: #0068ff;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 11px;
+      }
+      .social-icons a:hover {
+        transform: translateY(-3px);
+        background: #334155;
+      }
+      .clear-filters {
+        background: #f1f5f9;
+        border: none;
+        padding: 8px;
+        border-radius: 40px;
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-container {
+        background: white;
+        border-radius: 32px;
+        max-width: 500px;
+        width: 90%;
+        padding: 28px;
+        position: relative;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+      .cart-modal {
+        max-width: 700px;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .close-modal {
+        font-size: 28px;
+        cursor: pointer;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 12px 0;
+      }
+      .cart-item-info {
+        flex: 2;
+      }
+      .cart-qty {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cart-qty button {
+        background: #f1f5f9;
+        border: none;
+        width: 28px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .cart-total {
+        text-align: right;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 20px 0;
+      }
+      .checkout-btn {
+        background: #e3342f;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 14px;
+        border-radius: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 40px;
+        border: 1px solid #ccc;
+      }
+      @media (max-width: 900px) {
+        .pc-layout {
+          flex-direction: column;
+        }
+        .filter-sidebar {
+          width: 100%;
+          position: static;
+        }
+        .contact-flex {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-contact">
+          <i class="fas fa-phone-alt"></i> Hotline: 1900 6369
+          <i class="fas fa-store"></i> Hệ thống 15 chi nhánh
+        </div>
+        <div class="top-support">
+          <i class="fas fa-shield-alt"></i> Bảo hành tận tâm
+          <span style="margin-left: 12px"
+            ><i class="fas fa-truck"></i> Giao hàng nhanh</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="main-header">
+      <div class="container header-flex">
+        <div class="logo" id="logoHome">
+          <h1>NEW AGE PC</h1>
+          <p>Chuyên gia máy tính & linh kiện chính hãng</p>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Tìm PC, cấu hình..."
+            id="searchInput"
+          /><button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+          <div class="product-dropdown">
+            <div class="dropdown-icon"><i class="fas fa-th-large"></i></div>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="laptop.html"><i class="fas fa-laptop"></i> Laptop</a>
+              </li>
+              <li>
+                <a href="pc.html"><i class="fas fa-desktop"></i> PC Gaming</a>
+              </li>
+              <li>
+                <a href="linhkien.html"
+                  ><i class="fas fa-microchip"></i> Linh kiện</a
+                >
+              </li>
+              <li>
+                <a href="man.html"><i class="fas fa-tv"></i> Màn hình</a>
+              </li>
+              <li>
+                <a href="mousekey.html"
+                  ><i class="fas fa-keyboard"></i> Bàn phím - Chuột</a
+                >
+              </li>
+              <li>
+                <a href="khuyenmai.html"
+                  ><i class="fas fa-tags"></i> Khuyến mãi</a
+                >
+              </li>
+              <li>
+                <a href="tintuc.html"
+                  ><i class="fas fa-newspaper"></i> Tin công nghệ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="user-icon" id="userIconBtn">
+            <i class="far fa-user-circle"></i><span id="userDisplayName"></span>
+          </div>
+          <div class="cart-icon" id="cartIconBtn">
+            <i class="fas fa-shopping-cart"></i
+            ><span class="cart-badge" id="cartCount">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-bar">
+      <div class="container">
+        <div class="contact-flex">
+          <div class="contact-item" id="chatFacebookBtn">
+            <i class="fab fa-facebook-messenger"></i><span>Chat Facebook</span
+            ><small>(8h-21h)</small>
+          </div>
+          <div class="contact-item" id="chatZaloBtn">
+            <span class="custom-zalo-icon">Z</span><span>Chat Zalo</span
+            ><small>(8h-21h)</small>
+          </div>
+          <a href="tel:19001903" class="contact-item"
+            ><i class="fas fa-phone-alt"></i><span>1900.1903</span
+            ><small>(8h-21h)</small></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 style="margin: 20px 0 10px">🔥 PC GAMING CHÍNH HÃNG</h2>
+      <div class="pc-layout">
+        <div class="filter-sidebar">
+          <h3>Bộ lọc sản phẩm</h3>
+
+          <div class="filter-group">
+            <h4>Main <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="main">
+              <label><input type="checkbox" value="B760" /> B760</label
+              ><label><input type="checkbox" value="Z790" /> Z790</label
+              ><label><input type="checkbox" value="B650" /> B650</label
+              ><label><input type="checkbox" value="X670" /> X670</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>CPU <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="cpu">
+              <label><input type="checkbox" value="Intel i5" /> Intel i5</label
+              ><label><input type="checkbox" value="Intel i7" /> Intel i7</label
+              ><label><input type="checkbox" value="Intel i9" /> Intel i9</label
+              ><label><input type="checkbox" value="Ryzen 5" /> Ryzen 5</label
+              ><label><input type="checkbox" value="Ryzen 7" /> Ryzen 7</label
+              ><label><input type="checkbox" value="Ryzen 9" /> Ryzen 9</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Ổ Cứng <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="storage">
+              <label><input type="checkbox" value="512GB" /> 512GB SSD</label
+              ><label><input type="checkbox" value="1TB" /> 1TB SSD</label
+              ><label><input type="checkbox" value="2TB" /> 2TB SSD</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>VGA <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="vga">
+              <label><input type="checkbox" value="RTX 4060" /> RTX 4060</label
+              ><label><input type="checkbox" value="RTX 4070" /> RTX 4070</label
+              ><label><input type="checkbox" value="RTX 5060" /> RTX 5060</label
+              ><label><input type="checkbox" value="RTX 5070" /> RTX 5070</label
+              ><label
+                ><input type="checkbox" value="RTX 5080" /> RTX 5080</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>RAM <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="ram">
+              <label><input type="checkbox" value="16GB" /> 16GB</label
+              ><label><input type="checkbox" value="32GB" /> 32GB</label
+              ><label><input type="checkbox" value="64GB" /> 64GB</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Hãng VGA <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="brandVga">
+              <label><input type="checkbox" value="MSI" /> MSI</label
+              ><label><input type="checkbox" value="ASUS" /> ASUS</label
+              ><label
+                ><input type="checkbox" value="Gigabyte" /> Gigabyte</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Kích Thước Màn Hình <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="screenSize">
+              <label><input type="checkbox" value="24 inch" /> 24 inch</label
+              ><label><input type="checkbox" value="27 inch" /> 27 inch</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Phân Khúc <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="segment">
+              <label><input type="checkbox" value="Gaming" /> Gaming</label
+              ><label
+                ><input type="checkbox" value="Workstation" />
+                Workstation</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Loại case <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="caseType">
+              <label><input type="checkbox" value="ATX" /> ATX</label
+              ><label
+                ><input type="checkbox" value="Micro-ATX" /> Micro-ATX</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Sẵn hàng</h4>
+            <div class="filter-options">
+              <label
+                ><input type="checkbox" id="inStockOnly" /> Chỉ hiện còn
+                hàng</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Chi nhánh</h4>
+            <select id="branchFilter" class="sort-select" style="width: 100%">
+              <option value="all">Tất cả chi nhánh</option>
+              <option value="HN">Hà Nội</option>
+              <option value="HCM">TP.HCM</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <h4>Khoảng giá</h4>
+            <div class="price-range">
+              <input type="number" id="minPrice" placeholder="Từ" /><span
+                >-</span
+              ><input type="number" id="maxPrice" placeholder="Đến" />
+            </div>
+          </div>
+
+          <button class="clear-filters" id="clearFilters">
+            Xóa tất cả bộ lọc
+          </button>
+        </div>
+
+        <div style="flex: 1">
+          <div class="sort-bar">
+            <span>Tìm thấy <span id="productCount">0</span> sản phẩm</span
+            ><select id="sortSelect" class="sort-select">
+              <option value="default">Sắp xếp theo</option>
+              <option value="price_asc">Giá thấp đến cao</option>
+              <option value="price_desc">Giá cao đến thấp</option>
+            </select>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="features">
+        <div class="feature-item">
+          <i class="fas fa-truck-fast"></i>
+          <h4>Giao hàng toàn quốc</h4>
+          <p>Miễn phí vận chuyển đơn >10tr</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-headset"></i>
+          <h4>Hỗ trợ 24/7</h4>
+          <p>Đội ngũ kỹ thuật chuyên nghiệp</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-sync-alt"></i>
+          <h4>Bảo hành chính hãng</h4>
+          <p>Lên đến 36 tháng</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-laptop-code"></i>
+          <h4>Nâng cấp linh hoạt</h4>
+          <p>Tư vấn cấu hình</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>NEW AGE PC</h4>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Công nghệ, Hà Nội</p>
+            <p><i class="fas fa-phone"></i> 1900 6369</p>
+            <div class="social-icons">
+              <a href="#" id="footerFacebook"
+                ><i class="fab fa-facebook-f"></i></a
+              ><a href="#" id="footerYoutube"><i class="fab fa-youtube"></i></a
+              ><a href="#" id="footerInstagram"
+                ><i class="fab fa-instagram"></i></a
+              ><a href="#" id="footerZalo"
+                ><span class="custom-zalo-icon-footer">Z</span></a
+              >
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Hỗ trợ</h4>
+            <a href="chinhsachdoitra.html">Chính sách đổi trả</a
+            ><a href="baohanh.html">Bảo hành</a>
+          </div>
+          <div class="footer-col">
+            <h4>Về chúng tôi</h4>
+            <a href="gioithieu.html">Giới thiệu</a
+            ><a href="tuyendung.html">Tuyển dụng</a>
+          </div>
+        </div>
+        <div class="copyright" style="text-align: center; margin-top: 30px">
+          © 2026 NEW AGE PC - Máy tính chính hãng
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal đăng nhập -->
+    <div id="loginModal" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <span>Đăng nhập tài khoản</span
+          ><span class="close-modal" id="closeLoginModal">&times;</span>
+        </div>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Tên đăng nhập"
+        /><input
+          type="password"
+          id="loginPassword"
+          placeholder="Mật khẩu"
+        /><button
+          id="doLoginBtn"
+          style="
+            background: #f97316;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+          "
+        >
+          Đăng nhập
+        </button>
+        <p style="font-size: 12px; margin-top: 12px; text-align: center">
+          Demo: nhập bất kỳ (user / 123)
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal giỏ hàng -->
+    <div id="cartModal" class="modal-overlay">
+      <div class="modal-container cart-modal">
+        <div class="modal-header">
+          <span>Giỏ hàng của bạn</span
+          ><span class="close-modal" id="closeCartModal">&times;</span>
+        </div>
+        <div id="cartItemsList"></div>
+        <div id="cartTotal" class="cart-total">Tổng: 0₫</div>
+        <button id="checkoutBtn" class="checkout-btn">
+          🛒 Thanh toán ngay
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Dữ liệu sản phẩm PC
+      const allProducts = [
+        {
+          id: "pc1",
+          name: "PC Xtreme RTX 5070",
+          specs: ["Ryzen 7 7800X3D", "RTX 5070", "32GB DDR5", "1TB SSD"],
+          price: 58290000,
+          oldPrice: 62290000,
+          img: "https://nguyencongpc.vn/media/product/250-28601-pc-gaming-ryzen-7-7800x3d-ram-32gb-rtx-5070-12gb-01.jpg",
+          main: "B650",
+          cpu: "Ryzen 7",
+          storage: "1TB",
+          vga: "RTX 5070",
+          ram: "32GB",
+          brandVga: "MSI",
+          screenSize: "27 inch",
+          segment: "Gaming",
+          caseType: "ATX",
+          inStock: true,
+          branch: "HN",
+        },
+        {
+          id: "pc2",
+          name: "PC Workstation Ultra 9",
+          specs: ["Core Ultra 9 285k", "RTX 5080", "64GB RAM", "2TB SSD"],
+          price: 90990000,
+          oldPrice: 100990000,
+          img: "https://nguyencongpc.vn/media/product/250-28136-pc-gaming-25251352.jpg",
+          main: "Z790",
+          cpu: "Intel i9",
+          storage: "2TB",
+          vga: "RTX 5080",
+          ram: "64GB",
+          brandVga: "ASUS",
+          screenSize: "24 inch",
+          segment: "Workstation",
+          caseType: "ATX",
+          inStock: true,
+          branch: "HCM",
+        },
+        {
+          id: "pc3",
+          name: "PC Gaming i5 RTX 5060",
+          specs: ["i5-13400F", "RTX 5060", "16GB/512GB"],
+          price: 22390000,
+          oldPrice: 23990000,
+          img: "https://nguyencongpc.vn/media/product/250-27841-27426-pc-gaming-i5-13400f-ram-16g-rgb-vga-rtx-3060-12g-00.jpg",
+          main: "B760",
+          cpu: "Intel i5",
+          storage: "512GB",
+          vga: "RTX 5060",
+          ram: "16GB",
+          brandVga: "Gigabyte",
+          screenSize: "24 inch",
+          segment: "Gaming",
+          caseType: "Micro-ATX",
+          inStock: true,
+          branch: "HN",
+        },
+        {
+          id: "pc4",
+          name: "PC All-in-One HP 24",
+          specs: ["i5-1235U", "8GB/512GB", "23.8 FHD"],
+          price: 19499000,
+          oldPrice: 20590000,
+          img: "https://hanoicomputercdn.com/media/product/71821_pc_hp_all_in_one_24_cb1025d_850x850_5.jpg",
+          main: "B760",
+          cpu: "Intel i5",
+          storage: "512GB",
+          vga: "Integrated",
+          ram: "8GB",
+          brandVga: "Intel",
+          screenSize: "24 inch",
+          segment: "Văn phòng",
+          caseType: "All-in-One",
+          inStock: false,
+          branch: "HCM",
+        },
+        {
+          id: "pc5",
+          name: "PC Ryzen 5 RTX 4060",
+          specs: ["Ryzen 5 5600X", "RTX 4060", "16GB/1TB"],
+          price: 18990000,
+          oldPrice: 20990000,
+          img: "https://nguyencongpc.vn/media/product/250-27841-27426-pc-gaming-i5-13400f-ram-16g-rgb-vga-rtx-3060-12g-00.jpg",
+          main: "B650",
+          cpu: "Ryzen 5",
+          storage: "1TB",
+          vga: "RTX 4060",
+          ram: "16GB",
+          brandVga: "MSI",
+          screenSize: "27 inch",
+          segment: "Gaming",
+          caseType: "ATX",
+          inStock: true,
+          branch: "HN",
+        },
+        {
+          id: "pc6",
+          name: "PC Intel i7 RTX 4070",
+          specs: ["i7-13700K", "RTX 4070", "32GB/1TB"],
+          price: 35990000,
+          oldPrice: 38990000,
+          img: "https://nguyencongpc.vn/media/product/250-28601-pc-gaming-ryzen-7-7800x3d-ram-32gb-rtx-5070-12gb-01.jpg",
+          main: "Z790",
+          cpu: "Intel i7",
+          storage: "1TB",
+          vga: "RTX 4070",
+          ram: "32GB",
+          brandVga: "ASUS",
+          screenSize: "27 inch",
+          segment: "Gaming",
+          caseType: "ATX",
+          inStock: true,
+          branch: "HCM",
+        },
+      ];
+
+      let filteredProducts = [...allProducts];
+      let cart = JSON.parse(localStorage.getItem("newage_cart")) || [];
+      let productQuantities = {};
+      let loggedInUser = localStorage.getItem("loggedUser") || null;
+
+      // ========== ĐĂNG NHẬP ==========
+      function updateUserUI() {
+        const userSpan = document.getElementById("userDisplayName");
+        if (loggedInUser) {
+          userSpan.innerHTML = `<span class="user-loggedin">${loggedInUser}</span> <button id="logoutHeaderBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>`;
+          const logoutBtn = document.getElementById("logoutHeaderBtn");
+          if (logoutBtn)
+            logoutBtn.addEventListener("click", () => {
+              localStorage.removeItem("loggedUser");
+              loggedInUser = null;
+              updateUserUI();
+              alert("Đã đăng xuất");
+            });
+        } else {
+          userSpan.innerHTML = "";
+        }
+      }
+
+      const loginModal = document.getElementById("loginModal");
+      document.getElementById("userIconBtn").addEventListener("click", () => {
+        if (!loggedInUser) loginModal.style.display = "flex";
+        else alert(`Xin chào ${loggedInUser}`);
+      });
+      document
+        .getElementById("closeLoginModal")
+        .addEventListener("click", () => (loginModal.style.display = "none"));
+      document.getElementById("doLoginBtn").addEventListener("click", () => {
+        const user = document.getElementById("loginUsername").value.trim();
+        if (user) {
+          loggedInUser = user;
+          localStorage.setItem("loggedUser", user);
+          updateUserUI();
+          loginModal.style.display = "none";
+          alert(`Chào mừng ${user} đến với New Age PC`);
+        } else alert("Vui lòng nhập tên");
+      });
+
+      // Logo click về popici.html
+      document.getElementById("logoHome").addEventListener("click", () => {
+        window.location.href = "popici.html";
+      });
+
+      // ========== GIỎ HÀNG ==========
+      function renderProductCard(p) {
+        const qty = productQuantities[p.id] || 1;
+        return `<div class="product-card" data-id="${p.id}">
+            <img class="product-img" src="${p.img}" onerror="this.src='https://placehold.co/300x200?text=PC'" alt="${p.name}">
+            <div class="product-info">
+                <div class="product-title">${p.name}</div>
+                <div class="product-spec">${p.specs.slice(0, 2).join(" • ")}</div>
+                <div><span class="current-price">${p.price.toLocaleString()}₫</span><span class="old-price">${p.oldPrice.toLocaleString()}₫</span></div>
+                <div class="product-actions">
+                    <div class="quantity-selector-card">
+                        <button class="qty-minus" data-id="${p.id}">-</button>
+                        <span class="qty-value" data-id="${p.id}">${qty}</span>
+                        <button class="qty-plus" data-id="${p.id}">+</button>
+                    </div>
+                    <button class="btn-buy" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">Mua ngay</button>
+                </div>
+            </div>
+        </div>`;
+      }
+
+      function renderProducts() {
+        const grid = document.getElementById("productGrid");
+        if (filteredProducts.length === 0) {
+          grid.innerHTML =
+            '<div style="grid-column:1/-1; text-align:center;">Không tìm thấy sản phẩm nào.</div>';
+          document.getElementById("productCount").innerText = 0;
+          return;
+        }
+        grid.innerHTML = filteredProducts
+          .map((p) => renderProductCard(p))
+          .join("");
+        document.getElementById("productCount").innerText =
+          filteredProducts.length;
+        document.querySelectorAll(".qty-minus").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const current = productQuantities[id] || 1;
+            if (current > 1) productQuantities[id] = current - 1;
+            renderProducts();
+          }),
+        );
+        document.querySelectorAll(".qty-plus").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            productQuantities[id] = (productQuantities[id] || 1) + 1;
+            renderProducts();
+          }),
+        );
+        document.querySelectorAll(".btn-buy").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const product = allProducts.find((p) => p.id === id);
+            if (product) {
+              const qty = productQuantities[id] || 1;
+              addToCart(product, qty);
+            }
+          }),
+        );
+      }
+
+      function addToCart(product, quantity = 1) {
+        const existing = cart.find((item) => item.id === product.id);
+        if (existing) existing.qty += quantity;
+        else cart.push({ ...product, qty: quantity });
+        saveCart();
+        alert(`Đã thêm ${quantity} x ${product.name} vào giỏ hàng!`);
+      }
+
+      function saveCart() {
+        localStorage.setItem("newage_cart", JSON.stringify(cart));
+        updateCartBadge();
+      }
+      function updateCartBadge() {
+        document.getElementById("cartCount").innerText = cart.reduce(
+          (sum, i) => sum + i.qty,
+          0,
+        );
+      }
+
+      function renderCartModal() {
+        const container = document.getElementById("cartItemsList");
+        if (cart.length === 0) {
+          container.innerHTML = "<p>Giỏ hàng trống.</p>";
+          document.getElementById("cartTotal").innerHTML = "Tổng: 0₫";
+          return;
+        }
+        let html = "",
+          total = 0;
+        cart.forEach((item, idx) => {
+          const itemTotal = item.price * item.qty;
+          total += itemTotal;
+          html += `<div class="cart-item">
+                <div class="cart-item-info"><strong>${item.name}</strong><br>${item.price.toLocaleString()}₫</div>
+                <div class="cart-qty">
+                    <button class="cart-qty-down" data-idx="${idx}">-</button>
+                    <span>${item.qty}</span>
+                    <button class="cart-qty-up" data-idx="${idx}">+</button>
+                </div>
+                <div><span>${itemTotal.toLocaleString()}₫</span> <button class="cart-remove" data-idx="${idx}" style="background:none; border:none; color:#e3342f;"><i class="fas fa-trash"></i></button></div>
+            </div>`;
+        });
+        container.innerHTML = html;
+        document.getElementById("cartTotal").innerHTML =
+          `Tổng: ${total.toLocaleString()}₫`;
+        document.querySelectorAll(".cart-qty-up").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            cart[idx].qty++;
+            saveCart();
+            renderCartModal();
+          }),
+        );
+        document.querySelectorAll(".cart-qty-down").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            if (cart[idx].qty > 1) cart[idx].qty--;
+            else cart.splice(idx, 1);
+            saveCart();
+            renderCartModal();
+          }),
+        );
+        document.querySelectorAll(".cart-remove").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            cart.splice(idx, 1);
+            saveCart();
+            renderCartModal();
+          }),
+        );
+      }
+
+      // ========== LỌC & SẮP XẾP ==========
+      function applyFilters() {
+        let result = [...allProducts];
+        const groups = [
+          "main",
+          "cpu",
+          "storage",
+          "vga",
+          "ram",
+          "brandVga",
+          "screenSize",
+          "segment",
+          "caseType",
+        ];
+        groups.forEach((group) => {
+          const checked = Array.from(
+            document.querySelectorAll(
+              `.filter-options[data-filter="${group}"] input:checked`,
+            ),
+          ).map((cb) => cb.value);
+          if (checked.length)
+            result = result.filter((p) => checked.includes(p[group]));
+        });
+        if (document.getElementById("inStockOnly").checked)
+          result = result.filter((p) => p.inStock);
+        const branch = document.getElementById("branchFilter").value;
+        if (branch !== "all")
+          result = result.filter((p) => p.branch === branch);
+        const min = parseInt(document.getElementById("minPrice").value) || 0;
+        const max =
+          parseInt(document.getElementById("maxPrice").value) || Infinity;
+        result = result.filter((p) => p.price >= min && p.price <= max);
+        const sortBy = document.getElementById("sortSelect").value;
+        if (sortBy === "price_asc") result.sort((a, b) => a.price - b.price);
+        if (sortBy === "price_desc") result.sort((a, b) => b.price - a.price);
+        filteredProducts = result;
+        renderProducts();
+      }
+
+      document
+        .querySelectorAll(
+          'input[type="checkbox"], #branchFilter, #minPrice, #maxPrice, #sortSelect',
+        )
+        .forEach((el) => {
+          el.addEventListener("change", applyFilters);
+          if (el.id === "minPrice" || el.id === "maxPrice")
+            el.addEventListener("input", applyFilters);
+        });
+      document.getElementById("clearFilters").addEventListener("click", () => {
+        document
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((cb) => (cb.checked = false));
+        document.getElementById("branchFilter").value = "all";
+        document.getElementById("minPrice").value = "";
+        document.getElementById("maxPrice").value = "";
+        document.getElementById("sortSelect").value = "default";
+        applyFilters();
+      });
+      document.getElementById("searchBtn").addEventListener("click", () => {
+        const kw = document.getElementById("searchInput").value.toLowerCase();
+        if (kw) {
+          filteredProducts = allProducts.filter(
+            (p) =>
+              p.name.toLowerCase().includes(kw) ||
+              p.specs.join(" ").toLowerCase().includes(kw),
+          );
+          renderProducts();
+        } else applyFilters();
+      });
+
+      // ========== MODAL GIỎ HÀNG ==========
+      const cartModal = document.getElementById("cartModal");
+      document.getElementById("cartIconBtn").addEventListener("click", () => {
+        renderCartModal();
+        cartModal.style.display = "flex";
+      });
+      document
+        .getElementById("closeCartModal")
+        .addEventListener("click", () => (cartModal.style.display = "none"));
+      document.getElementById("checkoutBtn").addEventListener("click", () => {
+        if (!loggedInUser) {
+          alert("Vui lòng đăng nhập để thanh toán.");
+          loginModal.style.display = "flex";
+          return;
+        }
+        if (cart.length === 0) {
+          alert("Giỏ hàng trống");
+          return;
+        }
+        alert(
+          `✅ Đặt hàng thành công! Cảm ơn ${loggedInUser}, nhân viên sẽ liên hệ.`,
+        );
+        cart = [];
+        saveCart();
+        renderCartModal();
+        cartModal.style.display = "none";
+      });
+      window.onclick = (e) => {
+        if (e.target.classList.contains("modal-overlay"))
+          e.target.style.display = "none";
+      };
+
+      // ========== DEMO EVENTS ==========
+      document
+        .getElementById("chatFacebookBtn")
+        ?.addEventListener("click", () =>
+          alert("🔵 Chat Facebook: https://m.me/newagepc"),
+        );
+      document
+        .getElementById("chatZaloBtn")
+        ?.addEventListener("click", () =>
+          alert("💚 Chat Zalo: https://zalo.me/19001903"),
+        );
+      document
+        .getElementById("footerFacebook")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://facebook.com/newagepc");
+        });
+      document
+        .getElementById("footerYoutube")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://youtube.com/@newagepc");
+        });
+      document
+        .getElementById("footerInstagram")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://instagram.com/newagepc");
+        });
+      document.getElementById("footerZalo")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("https://zalo.me/19001903");
+      });
+
+      // ========== KHỞI TẠO ==========
+      updateUserUI();
+      updateCartBadge();
+      applyFilters();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>Linh kiện máy tính - New Age PC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f7f9fc;
+        color: #1e2a3e;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .top-bar {
+        background: #1e2a3e;
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 0;
+      }
+      .top-bar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .top-contact i,
+      .top-support i {
+        margin-right: 6px;
+        color: #f97316;
+      }
+      .main-header {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .header-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .logo {
+        cursor: pointer;
+      }
+      .logo h1 {
+        font-size: 28px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #e3342f, #f97316);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .logo p {
+        font-size: 12px;
+        color: #475569;
+      }
+      .search-bar {
+        flex: 1;
+        max-width: 420px;
+        display: flex;
+        background: #f1f5f9;
+        border-radius: 40px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+      }
+      .search-bar input {
+        flex: 1;
+        padding: 12px 18px;
+        border: none;
+        background: transparent;
+        outline: none;
+      }
+      .search-bar button {
+        background: #f97316;
+        border: none;
+        padding: 0 20px;
+        color: white;
+        cursor: pointer;
+      }
+      .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .product-dropdown {
+        position: relative;
+      }
+      .product-dropdown .dropdown-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #1e2a3e;
+        display: flex;
+        align-items: center;
+      }
+      .product-dropdown .dropdown-icon:hover {
+        color: #f97316;
+      }
+      .product-dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        min-width: 210px;
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s;
+        z-index: 200;
+        border: 1px solid #edf2f7;
+      }
+      .product-dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .dropdown-menu li {
+        list-style: none;
+        padding: 10px 20px;
+      }
+      .dropdown-menu li a {
+        text-decoration: none;
+        font-weight: 500;
+        color: #1e2a3e;
+        display: block;
+        font-size: 14px;
+      }
+      .dropdown-menu li a i {
+        margin-right: 10px;
+        width: 20px;
+        color: #f97316;
+      }
+      .dropdown-menu li:hover {
+        background: #f8fafc;
+      }
+      .cart-icon,
+      .user-icon {
+        position: relative;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        background: #e3342f;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        border-radius: 30px;
+        padding: 2px 6px;
+        min-width: 18px;
+        text-align: center;
+      }
+      .user-loggedin {
+        font-size: 14px;
+        font-weight: 500;
+        color: #f97316;
+        margin-left: 4px;
+      }
+      .logout-btn {
+        background: none;
+        border: none;
+        color: #e3342f;
+        font-size: 12px;
+        margin-left: 8px;
+        cursor: pointer;
+      }
+      .contact-bar {
+        background: #fff;
+        border-bottom: 1px solid #eef2f6;
+        padding: 10px 0;
+      }
+      .contact-flex {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #1e2a3e;
+        cursor: pointer;
+      }
+      .contact-item .fab.fa-facebook-messenger {
+        color: #0084ff;
+      }
+      .contact-item .custom-zalo-icon {
+        width: 20px;
+        height: 20px;
+        background: #0068ff;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .contact-item .fas.fa-phone-alt {
+        color: #e3342f;
+      }
+      .layout {
+        display: flex;
+        gap: 30px;
+        margin: 30px 0;
+      }
+      .filter-sidebar {
+        width: 280px;
+        background: white;
+        border-radius: 24px;
+        padding: 20px;
+        border: 1px solid #edf2f7;
+        height: fit-content;
+        position: sticky;
+        top: 100px;
+      }
+      .filter-group {
+        margin-bottom: 24px;
+        border-bottom: 1px solid #eef2f6;
+        padding-bottom: 16px;
+      }
+      .filter-group h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+      .filter-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .filter-options label {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .filter-options input {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+      .price-range {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .price-range input {
+        width: 100px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .sort-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .sort-select {
+        padding: 8px 16px;
+        border-radius: 40px;
+        border: 1px solid #e2e8f0;
+        background: white;
+        cursor: pointer;
+      }
+      .product-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.2s;
+        border: 1px solid #edf2f7;
+      }
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+      .product-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        background: #f1f5f9;
+      }
+      .product-info {
+        padding: 14px;
+      }
+      .product-title {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .product-spec {
+        font-size: 12px;
+        color: #475569;
+        margin-bottom: 8px;
+      }
+      .rating {
+        color: #ffc107;
+        font-size: 13px;
+        margin: 5px 0;
+      }
+      .current-price {
+        font-size: 18px;
+        font-weight: 800;
+        color: #e3342f;
+      }
+      .old-price {
+        font-size: 13px;
+        color: #94a3b8;
+        text-decoration: line-through;
+        margin-left: 8px;
+      }
+      .product-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .quantity-selector-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f1f5f9;
+        border-radius: 40px;
+        padding: 5px 10px;
+      }
+      .quantity-selector-card button {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: none;
+        background: #e2e8f0;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .quantity-selector-card span {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 30px;
+        text-align: center;
+      }
+      .btn-buy {
+        background: #e3342f;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 8px;
+        border-radius: 40px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-buy:hover {
+        background: #b91c1c;
+      }
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 24px;
+        background: white;
+        padding: 32px 28px;
+        border-radius: 32px;
+        margin: 48px 0;
+      }
+      .feature-item {
+        flex: 1;
+        text-align: center;
+      }
+      .feature-item i {
+        font-size: 36px;
+        color: #f97316;
+        transition: transform 0.3s;
+        display: inline-block;
+      }
+      .feature-item:hover i {
+        transform: rotate(360deg);
+      }
+      footer {
+        background: #0f172a;
+        color: #cbd5e1;
+        padding: 48px 0 24px;
+        margin-top: 60px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 32px;
+      }
+      .footer-col a {
+        color: #cbd5e1;
+        text-decoration: none;
+        display: block;
+        margin: 8px 0;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: #f97316;
+        text-decoration: none;
+      }
+      .social-icons {
+        display: flex;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #1e293b;
+        transition: 0.2s;
+        font-size: 20px;
+        text-decoration: none;
+      }
+      .social-icons a .fab.fa-facebook-f {
+        color: #1877f2;
+      }
+      .social-icons a .fab.fa-youtube {
+        color: #ff0000;
+      }
+      .social-icons a .fab.fa-instagram {
+        color: #e4405f;
+      }
+      .social-icons a .custom-zalo-icon-footer {
+        width: 20px;
+        height: 20px;
+        background: #0068ff;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 11px;
+      }
+      .social-icons a:hover {
+        transform: translateY(-3px);
+        background: #334155;
+      }
+      .clear-filters {
+        background: #f1f5f9;
+        border: none;
+        padding: 8px;
+        border-radius: 40px;
+        width: 100%;
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-container {
+        background: white;
+        border-radius: 32px;
+        max-width: 500px;
+        width: 90%;
+        padding: 28px;
+        position: relative;
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+      .cart-modal {
+        max-width: 700px;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .close-modal {
+        font-size: 28px;
+        cursor: pointer;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 12px 0;
+      }
+      .cart-item-info {
+        flex: 2;
+      }
+      .cart-qty {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cart-qty button {
+        background: #f1f5f9;
+        border: none;
+        width: 28px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .cart-total {
+        text-align: right;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 20px 0;
+      }
+      .checkout-btn {
+        background: #e3342f;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 14px;
+        border-radius: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 40px;
+        border: 1px solid #ccc;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          flex-direction: column;
+        }
+        .filter-sidebar {
+          width: 100%;
+          position: static;
+        }
+        .contact-flex {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-contact">
+          <i class="fas fa-phone-alt"></i> Hotline: 1900 6369
+          <i class="fas fa-store"></i> Hệ thống 15 chi nhánh
+        </div>
+        <div class="top-support">
+          <i class="fas fa-shield-alt"></i> Bảo hành tận tâm
+          <span style="margin-left: 12px"
+            ><i class="fas fa-truck"></i> Giao hàng nhanh</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="main-header">
+      <div class="container header-flex">
+        <div class="logo" id="logoHome">
+          <h1>NEW AGE PC</h1>
+          <p>Chuyên gia máy tính & linh kiện chính hãng</p>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Tìm linh kiện, CPU, VGA..."
+            id="searchInput"
+          /><button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="header-actions">
+          <div class="product-dropdown">
+            <div class="dropdown-icon"><i class="fas fa-th-large"></i></div>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="laptop.html"><i class="fas fa-laptop"></i> Laptop</a>
+              </li>
+              <li>
+                <a href="pc.html"><i class="fas fa-desktop"></i> PC Gaming</a>
+              </li>
+              <li>
+                <a href="linhkien.html"
+                  ><i class="fas fa-microchip"></i> Linh kiện</a
+                >
+              </li>
+              <li>
+                <a href="man.html"><i class="fas fa-tv"></i> Màn hình</a>
+              </li>
+              <li>
+                <a href="mousekey.html"
+                  ><i class="fas fa-keyboard"></i> Bàn phím - Chuột</a
+                >
+              </li>
+              <li>
+                <a href="khuyenmai.html"
+                  ><i class="fas fa-tags"></i> Khuyến mãi</a
+                >
+              </li>
+              <li>
+                <a href="tintuc.html"
+                  ><i class="fas fa-newspaper"></i> Tin công nghệ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="user-icon" id="userIconBtn">
+            <i class="far fa-user-circle"></i><span id="userDisplayName"></span>
+          </div>
+          <div class="cart-icon" id="cartIconBtn">
+            <i class="fas fa-shopping-cart"></i
+            ><span class="cart-badge" id="cartCount">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-bar">
+      <div class="container">
+        <div class="contact-flex">
+          <div class="contact-item" id="chatFacebookBtn">
+            <i class="fab fa-facebook-messenger"></i><span>Chat Facebook</span
+            ><small>(8h-21h)</small>
+          </div>
+          <div class="contact-item" id="chatZaloBtn">
+            <span class="custom-zalo-icon">Z</span><span>Chat Zalo</span
+            ><small>(8h-21h)</small>
+          </div>
+          <a href="tel:19001903" class="contact-item"
+            ><i class="fas fa-phone-alt"></i><span>1900.1903</span
+            ><small>(8h-21h)</small></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 style="margin: 20px 0 10px">🖥️ LINH KIỆN MÁY TÍNH CHÍNH HÃNG</h2>
+      <div class="layout">
+        <div class="filter-sidebar">
+          <h3>Bộ lọc sản phẩm</h3>
+          <div class="filter-group">
+            <h4>CPU - Bộ vi xử lý <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="cpu">
+              <label><input type="checkbox" value="Intel i3" /> Intel i3</label
+              ><label><input type="checkbox" value="Intel i5" /> Intel i5</label
+              ><label><input type="checkbox" value="Intel i7" /> Intel i7</label
+              ><label><input type="checkbox" value="Intel i9" /> Intel i9</label
+              ><label><input type="checkbox" value="Ryzen 3" /> Ryzen 3</label
+              ><label><input type="checkbox" value="Ryzen 5" /> Ryzen 5</label
+              ><label><input type="checkbox" value="Ryzen 7" /> Ryzen 7</label
+              ><label><input type="checkbox" value="Ryzen 9" /> Ryzen 9</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>VGA - Card Màn Hình <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="vga">
+              <label><input type="checkbox" value="RTX 3060" /> RTX 3060</label
+              ><label><input type="checkbox" value="RTX 4060" /> RTX 4060</label
+              ><label><input type="checkbox" value="RTX 4070" /> RTX 4070</label
+              ><label><input type="checkbox" value="RTX 4080" /> RTX 4080</label
+              ><label><input type="checkbox" value="RTX 4090" /> RTX 4090</label
+              ><label><input type="checkbox" value="RX 6600" /> RX 6600</label
+              ><label><input type="checkbox" value="RX 7600" /> RX 7600</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Main - Bo mạch chủ <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="main">
+              <label><input type="checkbox" value="B660" /> B660</label
+              ><label><input type="checkbox" value="B760" /> B760</label
+              ><label><input type="checkbox" value="Z690" /> Z690</label
+              ><label><input type="checkbox" value="Z790" /> Z790</label
+              ><label><input type="checkbox" value="B550" /> B550</label
+              ><label><input type="checkbox" value="X570" /> X570</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Ram - Bộ nhớ trong <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="ram">
+              <label><input type="checkbox" value="8GB" /> 8GB</label
+              ><label><input type="checkbox" value="16GB" /> 16GB</label
+              ><label><input type="checkbox" value="32GB" /> 32GB</label
+              ><label><input type="checkbox" value="64GB" /> 64GB</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>PSU - Nguồn máy tính <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="psu">
+              <label><input type="checkbox" value="500W" /> 500W</label
+              ><label><input type="checkbox" value="650W" /> 650W</label
+              ><label><input type="checkbox" value="750W" /> 750W</label
+              ><label><input type="checkbox" value="850W" /> 850W</label
+              ><label><input type="checkbox" value="1000W" /> 1000W</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Case - Vỏ máy tính <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="case">
+              <label><input type="checkbox" value="ATX" /> ATX</label
+              ><label
+                ><input type="checkbox" value="Micro-ATX" /> Micro-ATX</label
+              ><label
+                ><input type="checkbox" value="Mini-ITX" /> Mini-ITX</label
+              >
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Thương hiệu <i class="fas fa-chevron-down"></i></h4>
+            <div class="filter-options" data-filter="brand">
+              <label><input type="checkbox" value="Intel" /> Intel</label
+              ><label><input type="checkbox" value="AMD" /> AMD</label
+              ><label><input type="checkbox" value="NVIDIA" /> NVIDIA</label
+              ><label><input type="checkbox" value="ASUS" /> ASUS</label
+              ><label><input type="checkbox" value="MSI" /> MSI</label
+              ><label><input type="checkbox" value="Gigabyte" /> Gigabyte</label
+              ><label><input type="checkbox" value="Corsair" /> Corsair</label
+              ><label
+                ><input type="checkbox" value="Kingston" /> Kingston</label
+              >
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Trao đổi</h4>
+            <div class="filter-options">
+              <label
+                ><input type="checkbox" id="tradeFilter" /> Có thể trao
+                đổi</label
+              >
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Khoảng giá</h4>
+            <div class="price-range">
+              <input type="number" id="minPrice" placeholder="Từ" /><span
+                >-</span
+              ><input type="number" id="maxPrice" placeholder="Đến" />
+            </div>
+          </div>
+          <button class="clear-filters" id="clearFilters">
+            Xóa tất cả bộ lọc
+          </button>
+        </div>
+
+        <div style="flex: 1">
+          <div class="sort-bar">
+            <span>Tìm thấy <span id="productCount">0</span> sản phẩm</span
+            ><select id="sortSelect" class="sort-select">
+              <option value="default">Sắp xếp theo</option>
+              <option value="price_asc">Giá tăng dần</option>
+              <option value="price_desc">Giá giảm dần</option>
+              <option value="name_asc">Tên A → Z</option>
+              <option value="name_desc">Tên Z → A</option>
+              <option value="rating">Đánh giá cao nhất</option>
+            </select>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="features">
+        <div class="feature-item">
+          <i class="fas fa-truck-fast"></i>
+          <h4>Giao hàng toàn quốc</h4>
+          <p>Miễn phí vận chuyển đơn >10tr</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-headset"></i>
+          <h4>Hỗ trợ 24/7</h4>
+          <p>Đội ngũ kỹ thuật chuyên nghiệp</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-sync-alt"></i>
+          <h4>Bảo hành chính hãng</h4>
+          <p>Lên đến 36 tháng</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-laptop-code"></i>
+          <h4>Nâng cấp linh hoạt</h4>
+          <p>Tư vấn cấu hình</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>NEW AGE PC</h4>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Công nghệ, Hà Nội</p>
+            <p><i class="fas fa-phone"></i> 1900 6369</p>
+            <div class="social-icons">
+              <a href="#" id="footerFacebook"
+                ><i class="fab fa-facebook-f"></i></a
+              ><a href="#" id="footerYoutube"><i class="fab fa-youtube"></i></a
+              ><a href="#" id="footerInstagram"
+                ><i class="fab fa-instagram"></i></a
+              ><a href="#" id="footerZalo"
+                ><span class="custom-zalo-icon-footer">Z</span></a
+              >
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Hỗ trợ</h4>
+            <a href="chinhsachdoitra.html">Chính sách đổi trả</a
+            ><a href="baohanh.html">Bảo hành</a>
+          </div>
+          <div class="footer-col">
+            <h4>Về chúng tôi</h4>
+            <a href="gioithieu.html">Giới thiệu</a
+            ><a href="tuyendung.html">Tuyển dụng</a>
+          </div>
+        </div>
+        <div class="copyright" style="text-align: center; margin-top: 30px">
+          © 2026 NEW AGE PC - Máy tính chính hãng
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal đăng nhập -->
+    <div id="loginModal" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <span>Đăng nhập tài khoản</span
+          ><span class="close-modal" id="closeLoginModal">&times;</span>
+        </div>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Tên đăng nhập"
+        /><input
+          type="password"
+          id="loginPassword"
+          placeholder="Mật khẩu"
+        /><button
+          id="doLoginBtn"
+          style="
+            background: #f97316;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+          "
+        >
+          Đăng nhập
+        </button>
+        <p style="font-size: 12px; margin-top: 12px; text-align: center">
+          Demo: nhập bất kỳ (user / 123)
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal giỏ hàng -->
+    <div id="cartModal" class="modal-overlay">
+      <div class="modal-container cart-modal">
+        <div class="modal-header">
+          <span>Giỏ hàng của bạn</span
+          ><span class="close-modal" id="closeCartModal">&times;</span>
+        </div>
+        <div id="cartItemsList"></div>
+        <div id="cartTotal" class="cart-total">Tổng: 0₫</div>
+        <button id="checkoutBtn" class="checkout-btn">
+          🛒 Thanh toán ngay
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Dữ liệu linh kiện - mỗi loại ít nhất 2 sản phẩm
+      const allProducts = [
+        // CPU (2 sản phẩm)
+        {
+          id: "cpu1",
+          name: "Intel Core i5-13600K",
+          specs: ["13th gen", "14 cores", "20 threads", "LGA1700"],
+          price: 6990000,
+          oldPrice: 9690000,
+          img: "https://product.hstatic.net/200000420363/product/_2023_-khung-sp-_1__616f989121214c6496e039f888fe6ab0_master.jpg",
+          cpu: "Intel i5",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "",
+          brand: "Intel",
+          trade: false,
+          rating: 4.8,
+        },
+        {
+          id: "cpu2",
+          name: "AMD Ryzen 7 7800X3D",
+          specs: ["Zen4", "8 cores", "16 threads", "AM5"],
+          price: 9290000,
+          oldPrice: 10990000,
+          img: "data:image/webp;base64,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",
+          cpu: "Ryzen 7",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "",
+          brand: "AMD",
+          trade: true,
+          rating: 4.9,
+        },
+        // VGA (2 sản phẩm)
+        {
+          id: "vga1",
+          name: "ASUS RTX 4060 Ti 8GB",
+          specs: ["8GB GDDR6", "Ray Tracing", "DLSS3"],
+          price: 10990000,
+          oldPrice: 12990000,
+          img: "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/v/g/vga-asus-dual-geforce-rtx-4060-ti-8gb-dual-rtx4060ti_1__2.png",
+          cpu: "",
+          vga: "RTX 4060",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "",
+          brand: "ASUS",
+          trade: false,
+          rating: 4.7,
+        },
+        {
+          id: "vga2",
+          name: "Gigabyte RTX 4070 Super",
+          specs: ["12GB GDDR6X", "Ray Tracing", "DLSS3"],
+          price: 15990000,
+          oldPrice: 17990000,
+          img: "https://product.hstatic.net/200000722513/product/geforce_rtx__4070_super_windforce_oc_12g-02_cb8fbfeb315e480b8cf8698fee120280_master.png",
+          cpu: "",
+          vga: "RTX 4070",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "",
+          brand: "Gigabyte",
+          trade: true,
+          rating: 4.9,
+        },
+        // Main (2 sản phẩm)
+        {
+          id: "main1",
+          name: "ASUS ROG Strix B760-A",
+          specs: ["ATX", "DDR5", "PCIe 5.0", "WiFi 6E"],
+          price: 4590000,
+          oldPrice: 4990000,
+          img: "https://hanoicomputercdn.com/media/product/77916__mainboard_asus_rog_strix_b760_a_gaming_wifi_ddr5__1_.jpg",
+          cpu: "",
+          vga: "",
+          main: "B760",
+          ram: "",
+          psu: "",
+          case: "ATX",
+          brand: "ASUS",
+          trade: false,
+          rating: 4.6,
+        },
+        {
+          id: "main2",
+          name: "MSI MPG Z790 Carbon WiFi",
+          specs: ["ATX", "DDR5", "PCIe 5.0", "RGB"],
+          price: 8990000,
+          oldPrice: 9990000,
+          img: "https://product.hstatic.net/200000722513/product/01_7e961e31624247438cae58475805058a_3fcc7dfb151d45e48a86da8fbc254703_master.jpg",
+          cpu: "",
+          vga: "",
+          main: "Z790",
+          ram: "",
+          psu: "",
+          case: "ATX",
+          brand: "MSI",
+          trade: false,
+          rating: 4.8,
+        },
+        // RAM (2 sản phẩm)
+        {
+          id: "ram1",
+          name: "Kingston Fury 32GB DDR5",
+          specs: ["6000MHz", "RGB", "2x16GB"],
+          price: 3890000,
+          oldPrice: 4590000,
+          img: "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/r/a/ram-kingston-fury-rgb-ddr5-6000mhz-32gb-kf556c40bbak2-32wp_1_.png",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "32GB",
+          psu: "",
+          case: "",
+          brand: "Kingston",
+          trade: false,
+          rating: 4.8,
+        },
+        {
+          id: "ram2",
+          name: "Corsair Vengeance 16GB DDR4",
+          specs: ["3200MHz", "2x8GB", "Low Profile"],
+          price: 1890000,
+          oldPrice: 2290000,
+          img: "https://bizweb.dktcdn.net/thumb/grande/100/329/122/products/ram-pc-corsair-vengeance-lpx-8gb-3200mhz-ddr4-cmk16gx4m2e3200c16-8-26cb337e-4122-4bb7-bc55-54f38f4f086a-3b650c5f-51f8-4890-8951-95206ff25145.jpg?v=1758522711710",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "16GB",
+          psu: "",
+          case: "",
+          brand: "Corsair",
+          trade: true,
+          rating: 4.5,
+        },
+        // PSU (2 sản phẩm)
+        {
+          id: "psu1",
+          name: "Corsair RM750e",
+          specs: ["750W", "80+ Gold", "Full Modular"],
+          price: 2790000,
+          oldPrice: 3290000,
+          img: "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_330_1_.png",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "750W",
+          case: "",
+          brand: "Corsair",
+          trade: false,
+          rating: 4.7,
+        },
+        {
+          id: "psu2",
+          name: "Cooler Master MWE 650W",
+          specs: ["650W", "80+ Bronze", "Non-Modular"],
+          price: 1690000,
+          oldPrice: 1990000,
+          img: "https://hanoicomputercdn.com/media/product/89372_nguon_may_tinh_cooler_master_mwe_v3_230v_650_650w_80_plus_bronze_atx3__5_.jpg",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "650W",
+          case: "",
+          brand: "Cooler Master",
+          trade: false,
+          rating: 4.4,
+        },
+        // Case (2 sản phẩm)
+        {
+          id: "case1",
+          name: "Corsair 4000D Airflow",
+          specs: ["ATX", "Tempered Glass", "High Airflow"],
+          price: 2490000,
+          oldPrice: 2990000,
+          img: "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_16__1_4.png",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "ATX",
+          brand: "Corsair",
+          trade: true,
+          rating: 4.5,
+        },
+        {
+          id: "case2",
+          name: "Lian Li LANCOOL 216",
+          specs: ["ATX", "ARGB Fans", "Mesh Front"],
+          price: 2390000,
+          oldPrice: 2790000,
+          img: "https://www.tncstore.vn/media/product/11034-tnc-store-vo-case-lian-li-lancool-216-black-rgb-front-fans--5-.jpg",
+          cpu: "",
+          vga: "",
+          main: "",
+          ram: "",
+          psu: "",
+          case: "ATX",
+          brand: "Lian Li",
+          trade: true,
+          rating: 4.9,
+        },
+      ];
+
+      let filteredProducts = [...allProducts];
+      let cart = JSON.parse(localStorage.getItem("newage_cart")) || [];
+      let productQuantities = {};
+      let loggedInUser = localStorage.getItem("loggedUser") || null;
+
+      // Đăng nhập
+      function updateUserUI() {
+        const userSpan = document.getElementById("userDisplayName");
+        if (loggedInUser) {
+          userSpan.innerHTML = `<span class="user-loggedin">${loggedInUser}</span> <button id="logoutHeaderBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>`;
+          const logoutBtn = document.getElementById("logoutHeaderBtn");
+          if (logoutBtn)
+            logoutBtn.addEventListener("click", () => {
+              localStorage.removeItem("loggedUser");
+              loggedInUser = null;
+              updateUserUI();
+              alert("Đã đăng xuất");
+            });
+        } else userSpan.innerHTML = "";
+      }
+      const loginModal = document.getElementById("loginModal");
+      document.getElementById("userIconBtn").addEventListener("click", () => {
+        if (!loggedInUser) loginModal.style.display = "flex";
+        else alert(`Xin chào ${loggedInUser}`);
+      });
+      document
+        .getElementById("closeLoginModal")
+        .addEventListener("click", () => (loginModal.style.display = "none"));
+      document.getElementById("doLoginBtn").addEventListener("click", () => {
+        const user = document.getElementById("loginUsername").value.trim();
+        if (user) {
+          loggedInUser = user;
+          localStorage.setItem("loggedUser", user);
+          updateUserUI();
+          loginModal.style.display = "none";
+          alert(`Chào mừng ${user} đến với New Age PC`);
+        } else alert("Vui lòng nhập tên");
+      });
+
+      // Logo click về popici.html
+      document.getElementById("logoHome").addEventListener("click", () => {
+        window.location.href = "popici.html";
+      });
+
+      // Render sản phẩm
+      function renderProductCard(p) {
+        const qty = productQuantities[p.id] || 1;
+        const ratingStars =
+          "★".repeat(Math.floor(p.rating)) +
+          "☆".repeat(5 - Math.floor(p.rating));
+        return `<div class="product-card" data-id="${p.id}">
+            <img class="product-img" src="${p.img}" onerror="this.src='https://placehold.co/300x200?text=Linh+Kiện'" alt="${p.name}">
+            <div class="product-info">
+                <div class="product-title">${p.name}</div>
+                <div class="product-spec">${p.specs.slice(0, 2).join(" • ")}</div>
+                <div class="rating">${ratingStars} (${p.rating})</div>
+                <div><span class="current-price">${p.price.toLocaleString()}₫</span><span class="old-price">${p.oldPrice.toLocaleString()}₫</span></div>
+                <div class="product-actions">
+                    <div class="quantity-selector-card">
+                        <button class="qty-minus" data-id="${p.id}">-</button>
+                        <span class="qty-value" data-id="${p.id}">${qty}</span>
+                        <button class="qty-plus" data-id="${p.id}">+</button>
+                    </div>
+                    <button class="btn-buy" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">Mua ngay</button>
+                </div>
+            </div>
+        </div>`;
+      }
+
+      function renderProducts() {
+        const grid = document.getElementById("productGrid");
+        if (filteredProducts.length === 0) {
+          grid.innerHTML =
+            '<div style="grid-column:1/-1; text-align:center;">Không tìm thấy sản phẩm nào.</div>';
+          document.getElementById("productCount").innerText = 0;
+          return;
+        }
+        grid.innerHTML = filteredProducts
+          .map((p) => renderProductCard(p))
+          .join("");
+        document.getElementById("productCount").innerText =
+          filteredProducts.length;
+        document.querySelectorAll(".qty-minus").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const cur = productQuantities[id] || 1;
+            if (cur > 1) productQuantities[id] = cur - 1;
+            renderProducts();
+          }),
+        );
+        document.querySelectorAll(".qty-plus").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            productQuantities[id] = (productQuantities[id] || 1) + 1;
+            renderProducts();
+          }),
+        );
+        document.querySelectorAll(".btn-buy").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.dataset.id;
+            const product = allProducts.find((p) => p.id === id);
+            if (product) addToCart(product, productQuantities[id] || 1);
+          }),
+        );
+      }
+
+      // Giỏ hàng
+      function addToCart(product, qty) {
+        const existing = cart.find((item) => item.id === product.id);
+        if (existing) existing.qty += qty;
+        else cart.push({ ...product, qty });
+        saveCart();
+        alert(`Đã thêm ${qty} x ${product.name} vào giỏ hàng!`);
+      }
+      function saveCart() {
+        localStorage.setItem("newage_cart", JSON.stringify(cart));
+        updateCartBadge();
+      }
+      function updateCartBadge() {
+        document.getElementById("cartCount").innerText = cart.reduce(
+          (s, i) => s + i.qty,
+          0,
+        );
+      }
+      function renderCartModal() {
+        const container = document.getElementById("cartItemsList");
+        if (cart.length === 0) {
+          container.innerHTML = "<p>Giỏ hàng trống.</p>";
+          document.getElementById("cartTotal").innerHTML = "Tổng: 0₫";
+          return;
+        }
+        let html = "",
+          total = 0;
+        cart.forEach((item, idx) => {
+          total += item.price * item.qty;
+          html += `<div class="cart-item"><div class="cart-item-info"><strong>${item.name}</strong><br>${item.price.toLocaleString()}₫</div>
+            <div class="cart-qty"><button class="cart-qty-down" data-idx="${idx}">-</button><span>${item.qty}</span><button class="cart-qty-up" data-idx="${idx}">+</button></div>
+            <div><span>${(item.price * item.qty).toLocaleString()}₫</span> <button class="cart-remove" data-idx="${idx}" style="background:none; border:none; color:#e3342f;"><i class="fas fa-trash"></i></button></div></div>`;
+        });
+        container.innerHTML = html;
+        document.getElementById("cartTotal").innerHTML =
+          `Tổng: ${total.toLocaleString()}₫`;
+        document.querySelectorAll(".cart-qty-up").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            cart[idx].qty++;
+            saveCart();
+            renderCartModal();
+          }),
+        );
+        document.querySelectorAll(".cart-qty-down").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            if (cart[idx].qty > 1) cart[idx].qty--;
+            else cart.splice(idx, 1);
+            saveCart();
+            renderCartModal();
+          }),
+        );
+        document.querySelectorAll(".cart-remove").forEach((btn) =>
+          btn.addEventListener("click", (e) => {
+            let idx = btn.dataset.idx;
+            cart.splice(idx, 1);
+            saveCart();
+            renderCartModal();
+          }),
+        );
+      }
+
+      // Lọc và sắp xếp
+      function applyFilters() {
+        let result = [...allProducts];
+        const filterMap = {
+          cpu: "cpu",
+          vga: "vga",
+          main: "main",
+          ram: "ram",
+          psu: "psu",
+          case: "case",
+          brand: "brand",
+        };
+        for (const [key, field] of Object.entries(filterMap)) {
+          const checked = Array.from(
+            document.querySelectorAll(
+              `.filter-options[data-filter="${key}"] input:checked`,
+            ),
+          ).map((cb) => cb.value);
+          if (checked.length)
+            result = result.filter((p) => checked.includes(p[field]));
+        }
+        if (document.getElementById("tradeFilter").checked)
+          result = result.filter((p) => p.trade === true);
+        const min = parseInt(document.getElementById("minPrice").value) || 0;
+        const max =
+          parseInt(document.getElementById("maxPrice").value) || Infinity;
+        result = result.filter((p) => p.price >= min && p.price <= max);
+        const sortBy = document.getElementById("sortSelect").value;
+        if (sortBy === "price_asc") result.sort((a, b) => a.price - b.price);
+        if (sortBy === "price_desc") result.sort((a, b) => b.price - a.price);
+        if (sortBy === "name_asc")
+          result.sort((a, b) => a.name.localeCompare(b.name));
+        if (sortBy === "name_desc")
+          result.sort((a, b) => b.name.localeCompare(a.name));
+        if (sortBy === "rating") result.sort((a, b) => b.rating - a.rating);
+        filteredProducts = result;
+        renderProducts();
+      }
+
+      document
+        .querySelectorAll(
+          'input[type="checkbox"], #minPrice, #maxPrice, #sortSelect',
+        )
+        .forEach((el) => {
+          el.addEventListener("change", applyFilters);
+          if (el.id === "minPrice" || el.id === "maxPrice")
+            el.addEventListener("input", applyFilters);
+        });
+      document.getElementById("clearFilters").addEventListener("click", () => {
+        document
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((cb) => (cb.checked = false));
+        document.getElementById("minPrice").value = "";
+        document.getElementById("maxPrice").value = "";
+        document.getElementById("sortSelect").value = "default";
+        applyFilters();
+      });
+      document.getElementById("searchBtn").addEventListener("click", () => {
+        const kw = document.getElementById("searchInput").value.toLowerCase();
+        if (kw) {
+          filteredProducts = allProducts.filter(
+            (p) =>
+              p.name.toLowerCase().includes(kw) ||
+              p.specs.join(" ").toLowerCase().includes(kw),
+          );
+          renderProducts();
+        } else applyFilters();
+      });
+
+      // Modal giỏ hàng
+      const cartModal = document.getElementById("cartModal");
+      document.getElementById("cartIconBtn").addEventListener("click", () => {
+        renderCartModal();
+        cartModal.style.display = "flex";
+      });
+      document
+        .getElementById("closeCartModal")
+        .addEventListener("click", () => (cartModal.style.display = "none"));
+      document.getElementById("checkoutBtn").addEventListener("click", () => {
+        if (!loggedInUser) {
+          alert("Vui lòng đăng nhập để thanh toán.");
+          loginModal.style.display = "flex";
+          return;
+        }
+        if (cart.length === 0) {
+          alert("Giỏ hàng trống");
+          return;
+        }
+        alert(
+          `✅ Đặt hàng thành công! Cảm ơn ${loggedInUser}, nhân viên sẽ liên hệ.`,
+        );
+        cart = [];
+        saveCart();
+        renderCartModal();
+        cartModal.style.display = "none";
+      });
+      window.onclick = (e) => {
+        if (e.target.classList.contains("modal-overlay"))
+          e.target.style.display = "none";
+      };
+
+      // Demo events
+      document
+        .getElementById("chatFacebookBtn")
+        ?.addEventListener("click", () =>
+          alert("🔵 Chat Facebook: https://m.me/newagepc"),
+        );
+      document
+        .getElementById("chatZaloBtn")
+        ?.addEventListener("click", () =>
+          alert("💚 Chat Zalo: https://zalo.me/19001903"),
+        );
+      document
+        .getElementById("footerFacebook")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://facebook.com/newagepc");
+        });
+      document
+        .getElementById("footerYoutube")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://youtube.com/@newagepc");
+        });
+      document
+        .getElementById("footerInstagram")
+        ?.addEventListener("click", (e) => {
+          e.preventDefault();
+          alert("https://instagram.com/newagepc");
+        });
+      document.getElementById("footerZalo")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("https://zalo.me/19001903");
+      });
+
+      updateUserUI();
+      updateCartBadge();
+      applyFilters();
+    </script>
+  </body>
+</html>
